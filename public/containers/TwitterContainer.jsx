@@ -10,7 +10,11 @@ function TwitterContainer () {
   return (
     <div className="main-container">
       <div className="home">
-        Home
+        <p>Home</p>
+
+      
+        <i class="fa-brands fa-twitter"></i>
+       
        {/* <img src="public/assets/images/white-twitter-logo.png" alt="" /> */}
       </div>
       <div className="nav-bar">

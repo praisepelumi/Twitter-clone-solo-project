@@ -2,10 +2,10 @@ import React from "react";
 
 function InteractButtons () {
   return (
-    <div>
-      <button className="bottom-button comment"></button>
-      <button className="bottom-button like"></button>
-      <button className="bottom-button retweet"></button>
+    <div className="interact-buttons">
+      <div className="bottom-button comment"><i class="fa-regular fa-comment"></i></div>
+      <div className="bottom-button like"><i class="fa-regular fa-heart"></i></div>
+      <div className="bottom-button retweet"><i class="fa-solid fa-retweet"></i></div>
     </div>
   
   )
