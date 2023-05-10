@@ -2,7 +2,7 @@ import React from "react";
 
 function DeleteButton () {
     return (
-        <button>Delete Tweet</button>
+        <button className="deleteButton udButton">Delete Tweet</button>
     )
 }
 

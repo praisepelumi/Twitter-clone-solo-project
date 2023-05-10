@@ -121,17 +121,72 @@ input:focus {
 
 .user-display-container {
   border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
   
-  
+}
+
+
+.image-username {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .user-name-display {
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-between; */
-}
-
-.imaage-username {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 1.3rem;
+  
+}
+
+
+
+.name-and-handle-container span {
+  margin-left: 0.2rem;
+}
+
+.update-delete-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-self: flex-end;
+  margin-left: 12rem;
+}
+
+.drop-down-item {
+  margin-left: 1.5rem;
+  
+}
+
+.udButton {
+  background-color: var(--primary-color);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.text-box {
+  display: flex;
+  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-left: 2rem;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.interact-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
 }

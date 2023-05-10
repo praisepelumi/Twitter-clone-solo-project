@@ -4,9 +4,9 @@ import UpdateButton from "./UpdateButton";
 
 function DropDownMenu () {
     return (
-        <div>
-           <li class="drop-down-item"><UpdateButton/></li> 
-           <li class="drop-down-item"><DeleteButton/></li> 
+        <div className="update-delete-container">
+           <span className="drop-down-item"><UpdateButton/></span> 
+           <span className="drop-down-item"><DeleteButton/></span> 
         </div>
     )
 }

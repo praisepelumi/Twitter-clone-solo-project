@@ -2,7 +2,7 @@ import React from "react";
 
 function UpdateButton () {
   return (
-    <button>Update Tweet</button>
+    <button className="updateButton udButton">Update Tweet</button>
   )
 }
 
