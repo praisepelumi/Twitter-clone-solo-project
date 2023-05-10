@@ -4,11 +4,10 @@
   "description": "Twiiter clone",
   "main": "index.js",
   "scripts": {
-    
-    "start" : "concurrently \"webpack-dev-server\" \"nodemon ./server/server.js\"",
+    "start": "concurrently \"webpack-dev-server\" \"nodemon ./server/server.js\"",
     "build": "Webpack .",
     "dev": "webpack-dev-server",
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Praise Emmanuel",
   "license": "ISC",
@@ -27,6 +26,7 @@
     "eslint-plugin-jest": "^27.2.1",
     "html-webpack-plugin": "^5.5.1",
     "path": "^0.12.7",
+    "prettier": "^3.0.0-alpha.6",
     "webpack": "^5.82.0",
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0"
