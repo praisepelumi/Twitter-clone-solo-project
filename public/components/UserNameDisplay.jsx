@@ -2,16 +2,16 @@ import React from "react";
 import TimeTweeted from "./timeTweeted";
 import DropDownMenu from "./DropDownMenu";
 
-function UserNameDisplay () {
+function UserNameDisplay ({username, fullname, tweetId, tweetArr, userArr, setDisplay}) {
   return (
     <div className="user-name-display">
       <div className="name-and-handle-container">
-        <span className="full-name">LEYE LEX</span> 
-        <span className="twitter-handle">@leyeConnect</span> <span><TimeTweeted/></span>
+        <span className="full-name">{fullname}</span> 
+        <span className="twitter-handle">@{username}</span> <span><TimeTweeted/></span>
       </div>
 
 
-      <DropDownMenu />
+      <DropDownMenu tweetId={tweetId} tweetArr={tweetArr} userArr={userArr} setDisplay={setDisplay} />
       
       
       

@@ -25,5 +25,22 @@ userController.createUser = (req, res, next) =>  {
     });
 }
 
+userController.getUsers = (req, res, next) => {
+
+  User.find({})
+  .then(users => {
+    res.locals.users = users;
+    return next()
+  })
+  .catch(err => {
+    console.error(err);
+      res.status(500).json({
+        message: 'An error occurred while getting tweets'
+      });
+      return next(err);
+  })
+}
+
+
 
 module.exports = userController;

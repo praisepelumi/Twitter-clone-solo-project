@@ -1,18 +1,21 @@
 import React from "react";
-import ImageButton from "./imageButton";
-import TweetButton from "./tweetbutton";
+import { useState, useEffect } from 'react';
+import TweetButton from "./buttons/TweetButton";
 
-function MainTweetBox () {
+function MainTweetBox ({setDisplay, display, tweetArr, userArr}) {
+  const [text, setText] = useState('');
   return (
     <div className="tweet-box">
       <div class='img-div'>
-      <img src="https://images.unsplash.com/photo-1515041219749-89347f83291a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FydG9vbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" />
+      <img src="https://www.ukeof.org.uk/images/TwitterLogo_55acee.png/@@images/image.png" />
       </div>
       <div className="input-and-image">
-      <input type="text" placeholder="What's happening?" />
-      {/* <ImageButton/> */}
+      <input 
+      value={text}
+      onChange={e => setText(e.target.value)}
+      type="text" placeholder="What's happening?" />
       </div>
-      <TweetButton/>
+      <TweetButton setDisplay={setDisplay} display={display} newTweet={text} tweetArr={tweetArr} userArr={userArr}/>
     </div>
   );
 };

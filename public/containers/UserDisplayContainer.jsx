@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import UserImage from "../components/userImage";
 import UserNameDisplay from "../components/UserNameDisplay";
 import TextBox from "../components/TextBox";
-import InteractButtons from "../components/InteractButtons";
+import InteractButtons from "../components/buttons/InteractButtons";
 
 
 
 
-function UserDisplayContainer ({}) {
+function UserDisplayContainer ({username, fullname, src, tweet, tweetId, tweetArr, userArr, setDisplay}) {
   
   return (
     <div className="user-display-container">
     <div className="image-username">
-      <UserImage  />
-      <UserNameDisplay  />
+      <UserImage src={src}  />
+      <UserNameDisplay username={username} fullname={fullname} tweetId={tweetId} userArr={userArr} tweetArr={tweetArr} setDisplay={setDisplay}  />
     </div>
     
-    <TextBox/>
+    <TextBox tweet={tweet}/>
     <InteractButtons />
   </div>
    

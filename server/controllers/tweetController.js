@@ -7,7 +7,6 @@ tweetController.getTweets = (req, res, next) => {
   // this method should generate all tweets in our current database
   Tweet.find({})
   .then((data) => {
-    console.log(data)
     res.locals.tweet = data
     return next()
   })
@@ -24,24 +23,30 @@ tweetController.getTweets = (req, res, next) => {
 tweetController.createTweet = (req, res, next) => {
   const { username } = req.params;
   const { newTweet } = req.body;
-  Tweet.create({
-    username: username,
-    text: newTweet  
-  })
-    // {$push: {tweets: {text: newTweet}}},
-    // {new: true }
-  
-  .then(document => {
-    res.locals.newTweet = document;
-    return next();
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json({
-      message: 'An error occurred while creating the tweets'
-    });
-    return next(err);
-  })
+  User.findOne({username})
+    .then(user => {
+      if(!user) {
+        return next({
+          log: 'user not found',
+          status: 404,
+        })
+      }
+      Tweet.create({
+        username: user.username,
+        text: newTweet  
+      })
+      .then(document => {
+        res.locals.newTweet = document;
+        return next();
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          message: 'An error occurred while creating the tweets'
+        });
+        return next(err);
+      })
+    })
 }
 
 tweetController.updateTweet = (req, res, next) => {

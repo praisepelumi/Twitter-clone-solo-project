@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import ForYouButton from '/public/components/ForYouButton.jsx';
+import { useState, useEffect } from 'react';
+import ForYouButton from '../components/buttons/ForYouButton';
 import NewsFeed from '/public/components/NewsFeed.jsx';
 import MainTweetBox from '../components/mainTweetBox';
 import UserDisplayContainer from './UserDisplayContainer';
@@ -13,12 +13,55 @@ function TwitterContainer () {
       argument is ignored after the initial render*/
   /*useState returns an array with exactly two values. The current state and set function
   current state matches initial state on first rended. Set function helps us update state*/
-// const [username, setUsername] = useState(); 
-// const [name, setName] = userState();
-const [display, setDisplay] = useState();
-// const [text, setText] = useState();
-// const [src, setSrc] = useState();
 
+const [display, setDisplay] = useState();
+const [tweetArr, setTweetArr] = useState();
+const [userArr, setUser] = useState();
+
+// function fetchData () {
+//   fetch('http://localhost:3000/tweets')
+//     .then(response => response.json())
+//     .then(data => {
+//       setTweetArr(data)
+//     })
+//     .catch(err => {
+//       console.log('There was an error getting tweets', err)
+//     });
+  
+//   fetch('http://localhost:3000/loadusers')
+//     .then(response => response.json())
+//     .then(data => {
+//       setUser(data)
+//     })
+//     .catch(err => {
+//       console.log('There was an error getting users', err)
+//     });
+// }
+
+  useEffect(() => {
+    // GET request using fetch  inside the useEffect React hook
+    const interval = setInterval(() => {
+      fetch('http://localhost:3000/tweets')
+      .then(response => response.json())
+      .then(data => {
+        setTweetArr(data)
+      })
+      .catch(err => {
+        console.log('There was an error getting tweets', err)
+      });
+    
+    fetch('http://localhost:3000/loadusers')
+      .then(response => response.json())
+      .then(data => {
+        setUser(data)
+      })
+      .catch(err => {
+        console.log('There was an error getting users', err)
+      });
+    }, 500); // runs every 1 second
+    
+    return () => clearInterval(interval); // This cleans up the interval when the compnent unmounts to prevent any memory leaks
+  }, [])
 
   return (
     <div className="main-container">
@@ -30,9 +73,9 @@ const [display, setDisplay] = useState();
         <ForYouButton />
         <NewsFeed />
       </div>
-      <MainTweetBox/>
+      <MainTweetBox setDisplay={setDisplay} display={display} tweetArr={tweetArr} userArr={userArr}/>
       {/* set display updates our sate display */}
-      <LoadTweets setDisplay={setDisplay}/>
+      <LoadTweets setDisplay={setDisplay} tweetArr={tweetArr} userArr={userArr}/>
 
       {/* // display is an array that contains 3 individual user display contianers */}
       {display}

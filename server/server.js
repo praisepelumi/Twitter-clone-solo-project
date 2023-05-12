@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+var cors = require('cors')
 require('dotenv').config();
 const userController = require('./controllers/userController.js');
 const tweetController = require('./controllers/tweetController.js')
@@ -13,6 +14,7 @@ const app = express();
 const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded());
 
@@ -23,13 +25,17 @@ app.get('/tweets', tweetController.getTweets, (req, res) => {
 
 });
 
+app.get('/loadusers', userController.getUsers, (req, res) => {
+  res.status(200).json(res.locals.users);
+})
+
 app.post('/createuser', userController.createUser, (req, res) => {
   res.status(201).json(res.locals.newUser);
 })
 
 
 // route for creating new tweet
-app.post('/newtweet/:username', tweetController.createTweet, (req, res) => {
+app.post('/newtweet/:username/', tweetController.createTweet, (req, res) => {
   res.status(201).json(res.locals.newTweet)
 })
 
