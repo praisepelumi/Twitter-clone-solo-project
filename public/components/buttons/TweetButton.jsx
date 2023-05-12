@@ -12,7 +12,7 @@ function TweetButton ({newTweet, tweetArr, userArr, display, setDisplay}) {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({newTweet})
     };
-    await fetch('http://localhost:3000/newtweet/codesmith/', requestOptions)
+    await fetch('http://localhost:3000/newtweet/elonmusk/', requestOptions)
       .then(response => response.json())
       .then(data => {
         console.log("i came from here",data);
